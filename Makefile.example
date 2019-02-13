@@ -1,0 +1,15 @@
+# based on: http://nuclear.mutantstargoat.com/articles/make/
+
+SRC = $(wildcard *.c)
+OBJ = $(SRC:.c=.o)
+TARGET = read_sense
+
+CFLAGS = -Wall
+LDFLAGS =
+
+$(TARGET): $(OBJ)
+	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
+
+.PHONY: clean
+clean:
+	rm -f $(OBJ) $(TARGET)
