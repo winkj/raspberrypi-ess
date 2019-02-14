@@ -135,7 +135,23 @@ $ mv sgp30_example_usage.c sgp30.sample
 To create our final application, we basically combine the two into one. We *recommend* to try this yourself as an exercise. However for convenience or to compare your version against ours, we've also included one in this repository. If you want to use that version, copy it over like this: 
 ```shell
 $ cp ../raspberrypi-ess/
-$ cp ../raspberrypi-ess/ess_sample.c .
+$ cp ../raspberrypi-ess/ess_sample_usage.c .
 ```
+
+Finally, it's time to compile the sample:
+```shell
+$ make
+# ...
+```
+
+If everything worked as expected, you should now have an executable called ```rpi-ess```. Run it to read out the sensors:
+```shell
+$ ./rpi-ess
+# ...
+```
+
+## Questions & Support
+
+If you have any questions on the tutorial, please file an issue here on the github page at https://github.com/winkj/raspberrypi-ess/. If you have a question on Sensirion's product, check out Sensirion's [Support Center](http://sensirion.com/support).
 
 ## Appendix A: Manually connecting the ESS to a Raspberry Pi
