@@ -189,6 +189,6 @@ If you have any questions on the tutorial, please file an issue here on the gith
 
 As mentioned earlier, we recommend to use an adapter shield to connect the ESS to the Raspberry Pi, to avoid errors in the connections. That said, it's possible to use jumper wires to connect the ESS to the Raspberry Pi.
 
-Check out [this page](https://www.raspberrypi-spy.co.uk/2012/06/simple-guide-to-the-rpi-gpio-header-and-pins/) for a Raspberry Pi Pinout. Pin names and pin numbers below refer to the pinout diagrams found there.
+Check out [this page](https://www.raspberrypi-spy.co.uk/2012/06/simple-guide-to-the-rpi-gpio-header-and-pins/) for a Raspberry Pi Pinout. 
 
 Check out [this PDF](https://github.com/winkj/ess-hardware-docs/blob/master/ESS_Schematic.PDF) for the schematic of the ESS. The ESS follows the Arduino Uno pin layout. For I2C, you can either use the Arduino pinout, or the 4-pin connector that's available on the back. For the GPIOs, use ```D9``` (red), ```D10``` (orange) and ```D11``` (green) from the Arduino pinout.
