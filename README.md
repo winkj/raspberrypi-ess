@@ -29,7 +29,8 @@ The main components are of course the Raspberry Pi itself, and the Sensirion ESS
 
 In addition, you will need a microSD card setup for Raspberry Pi. This tutorial assumes a Raspbian setup. At the time of writing, Stretch Lite was the latest version, available [here](https://www.raspberrypi.org/downloads/raspbian/).
 
-Finally, we recommend to use a Raspberry Pi to Arduino Adaptor Shield, for example The [ARPI600](https://www.waveshare.com/arpi600.htm), because this is the easiest and safest way to connect the board If you'd rather use jumper wires see [Appendix A](#appendix-a-manually-connecting-the-ess-to-a-raspberry-pi)
+Finally, we recommend to use a Raspberry Pi to Arduino a
+dapter Shield, for example The [ARPI600](https://www.waveshare.com/arpi600.htm), because this is the easiest and safest way to connect the board If you'd rather use jumper wires see [Appendix A](#appendix-a-manually-connecting-the-ess-to-a-raspberry-pi)
 
 ## Hardware setup
 
@@ -186,4 +187,8 @@ If you have any questions on the tutorial, please file an issue here on the gith
 
 ## Appendix A: Manually connecting the ESS to a Raspberry Pi
 
-TBD
+As mentioned earlier, we recommend to use an adapter shield to connect the ESS to the Raspberry Pi, to avoid errors in the connections. That said, it's possible to use jumper wires to connect the ESS to the Raspberry Pi.
+
+Check out [this page](https://www.raspberrypi-spy.co.uk/2012/06/simple-guide-to-the-rpi-gpio-header-and-pins/) for a Raspberry Pi Pinout. Pin names and pin numbers below refer to the pinout diagrams found there.
+
+Check out [this PDF](https://github.com/winkj/ess-hardware-docs/blob/master/ESS_Schematic.PDF) for the schematic of the ESS. The ESS follows the Arduino Uno pin layout. For I2C, you can either use the Arduino pinout, or the 4-pin connector that's available on the back. For the GPIOs, use ```D9``` (red), ```D10``` (orange) and ```D11``` (green) from the Arduino pinout.
