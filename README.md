@@ -150,8 +150,40 @@ $ ./rpi-ess
 # ...
 ```
 
+## GPIO support
+
+The ESS features three leds (red/orange/green) that can be controlled through the sysfs GPIO interface. When using the ARPI600, the GPIO numbers are as follows:
+
+|GPIO pin|function|
+|--------|--------|
+| 4|Red LED|
+| 8|Orange LED|
+|10|Green LED|
+
+### Controlling the LEDs from the shell
+
+To enable GPIO control via the shell, enable GPIO control like this (example using the RED led, pin 4):
+```shell
+$ echo "4" > /sys/class/gpio/export
+$ echo "out" > /sys/class/gpio/gpio4/direction
+```
+
+Then, in order to set and clear the GPIO value, simply write ```1``` (= set, turn on the LED) or ```0``` to the corresponding sysfs path:
+```shell
+$ echo "1" > /sys/class/gpio/gpio4/value
+$ echo "0" > /sys/class/gpio/gpio4/value
+```
+
+Replace ```4``` and ```gpio4``` with ```8```/```10``` and ```gpio8```/```gpio10``` to control the orange and green LED, respectively.
+
+### Controlling the LEDs from a C application
+
+You can simply reimplement the above shell commands in your C program, or include a GPIO library, for example https://github.com/embeddedarm/gpio-sysfs-demo.
+
 ## Questions & Support
 
 If you have any questions on the tutorial, please file an issue here on the github page at https://github.com/winkj/raspberrypi-ess/. If you have a question on Sensirion's product, check out Sensirion's [Support Center](http://sensirion.com/support).
 
 ## Appendix A: Manually connecting the ESS to a Raspberry Pi
+
+TBD
