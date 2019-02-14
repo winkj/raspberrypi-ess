@@ -84,7 +84,58 @@ $ git clone --recursive https://github.com/Sensirion/embedded-sht.git
 $ git clone --recursive https://github.com/Sensirion/embedded-sgp.git
 ```
 
+We will also clone the repository from this tutorial, to get access to a sample application and sample Makefile:
+
+```shell
+$ git clone https://github.com/winkj/raspberrypi-ess.git
+```
+
 ### Step 2: Build driver release
 
+```shell
+$ cd embedded-sht
+$ make shtc1
+$ cd ../embedded-sgp
+$ make sgp30
+$ cd ..
+```
+
+### Step 3: Create your project working directory
+
+```shell
+$ mkdir ess-rpi
+```
+
+Next, we copy all the necessary files to our project directory
+```shell
+$ cp embedded-sgp/embedded-common/*.{h,c} ess-rpi
+$ cp embedded-sgp/sgp-common/*.{c,h} ess-rpi/
+$ cp embedded-sgp/sgp30/*.{c,h} ess-rpi/
+$ cp embedded-sht/sht-common/*.{c,h} ess=rpi/
+$ cp embedded-sht/shtc1/shtc1.c ess-rpi/
+```
+
+Sensirion's sample driver employ a hardware abstraction layer, which enables for simple porting. The code we copied above was completely platform independent, so those steps would be the same for platforms other than Linux/Raspberry Pi. In the next step, we'll bring in the platform specific functions to enable 
+```shell
+$ cp embedded-sgp/embedded-common/hw_i2c/sample-implementations/linux_user_space/sensirion_hw_i2c_implementation.c ess-rpi/
+```
+
+For the next step, we copy over (and rename while we're at it) an example Makefile from this repository
+```shell
+$ cp raspberrypi-ess/Makefile.example ess-rpi/Makefile
+```
+
+As the last step, we need a main function for our application. With the code we copied above, there's currently two examples in our project directory, one from ```embedded-sht``` called ```example_usage.c```, and one from ```embedded-sgp``` called ```sgp30_example_usage.c```. So as a first step, let's rename those so they are out of the way (note that we're removing the ```.c``` suffix; this way, the Makefile will not look at them anymore, which would cause a symbol conflict):
+```shell
+$ cd ess-rpi
+$ mv example_usage.c sht.sample
+$ mv sgp30_example_usage.c sgp30.sample
+```
+
+To create our final application, we basically combine the two into one. We *recommend* to try this yourself as an exercise. However for convenience or to compare your version against ours, we've also included one in this repository. If you want to use that version, copy it over like this: 
+```shell
+$ cp ../raspberrypi-ess/
+$ cp ../raspberrypi-ess/ess_sample.c .
+```
 
 ## Appendix A: Manually connecting the ESS to a Raspberry Pi
