@@ -19,7 +19,7 @@ This tutorial describes how to connect the [Sensirion Environmental Shield (ESS)
 
 This tutorial assumes that the reader has basic knowledge of the Raspberry Pi, and a Raspberry Pi setup with working internet access.
 
-For beginners, we recommend Raspberry Pi's {help guides](https://www.raspberrypi.org/help/).
+For beginners, we recommend Raspberry Pi's [help guides](https://www.raspberrypi.org/help/).
 
 ## Hardware needed
 
