@@ -2,7 +2,7 @@
 
 SRC = $(wildcard *.c)
 OBJ = $(SRC:.c=.o)
-TARGET = read_sense
+TARGET = rpi-ess
 
 CFLAGS = -Wall
 LDFLAGS =
