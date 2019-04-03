@@ -110,10 +110,10 @@ $ mkdir ess-rpi
 Next, we copy all the necessary files to our project directory
 ```shell
 $ cp embedded-sgp/embedded-common/*.{h,c} ess-rpi \
- cp embedded-sgp/sgp-common/*.{c,h} ess-rpi/ \
- cp embedded-sgp/sgp30/*.{c,h} ess-rpi/ \
- cp embedded-sht/sht-common/*.{c,h} ess-rpi/ \
- cp embedded-sht/shtc1/shtc1.c ess-rpi/
+    cp embedded-sgp/sgp-common/*.{c,h} ess-rpi/ \
+    cp embedded-sgp/sgp30/*.{c,h} ess-rpi/ \
+    cp embedded-sht/sht-common/*.{c,h} ess-rpi/ \
+    cp embedded-sht/shtc1/shtc1.c ess-rpi/
 ```
 
 Sensirion's sample driver employ a hardware abstraction layer, which enables for simple porting. The code we copied above was completely platform independent, so those steps would be the same for platforms other than Linux/Raspberry Pi. In the next step, we'll bring in the platform specific functions to enable 
@@ -135,8 +135,7 @@ $ mv sgp30_example_usage.c sgp30.sample
 
 To create our final application, we basically combine the two into one. We *recommend* to try this yourself as an exercise. However for convenience or to compare your version against ours, we've also included one in this repository. If you want to use that version, copy it over like this: 
 ```shell
-$ cp ../raspberrypi-ess/
-$ cp ../raspberrypi-ess/ess_sample_usage.c .
+$ cp ../raspberrypi-ess/ess_example_usage.c .
 ```
 
 Finally, it's time to compile the sample:
