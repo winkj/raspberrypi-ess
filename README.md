@@ -109,11 +109,11 @@ $ mkdir ess-rpi
 
 Next, we copy all the necessary files to our project directory
 ```shell
-$ cp embedded-sgp/embedded-common/*.{h,c} ess-rpi
-$ cp embedded-sgp/sgp-common/*.{c,h} ess-rpi/
-$ cp embedded-sgp/sgp30/*.{c,h} ess-rpi/
-$ cp embedded-sht/sht-common/*.{c,h} ess=rpi/
-$ cp embedded-sht/shtc1/shtc1.c ess-rpi/
+$ cp embedded-sgp/embedded-common/*.{h,c} ess-rpi \
+ cp embedded-sgp/sgp-common/*.{c,h} ess-rpi/ \
+ cp embedded-sgp/sgp30/*.{c,h} ess-rpi/ \
+ cp embedded-sht/sht-common/*.{c,h} ess-rpi/ \
+ cp embedded-sht/shtc1/shtc1.c ess-rpi/
 ```
 
 Sensirion's sample driver employ a hardware abstraction layer, which enables for simple porting. The code we copied above was completely platform independent, so those steps would be the same for platforms other than Linux/Raspberry Pi. In the next step, we'll bring in the platform specific functions to enable 
