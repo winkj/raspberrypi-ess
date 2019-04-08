@@ -58,7 +58,7 @@ int main(void) {
 
     /* Busy loops for initialization. The main loop does not work without
      * the sensors. */
-    while (sgp_probe() != STATUS_OK) {
+    while (sgp30_probe() != STATUS_OK) {
         printf("SGP sensor probing failed\n");
         sleep(1);
     }
@@ -71,7 +71,7 @@ int main(void) {
 
 
     /* Read gas signals */
-    err = sgp_measure_signals_blocking_read(&ethanol_signal,
+    err = sgp30_measure_raw_blocking_read(&ethanol_signal,
                                             &h2_signal);
     if (err == STATUS_OK) {
         /* Print ethanol signal and h2 signal */
@@ -86,16 +86,16 @@ int main(void) {
      * (A) If no baseline is available or the most recent baseline is more than
      *     one week old, it must discarded. A new baseline is found with
      *     sgp_iaq_init() */
-    err = sgp_iaq_init();
+    err = sgp30_iaq_init();
     /* (B) If a recent baseline is available, set it after sgp_iaq_init() for
      * faster start-up */
     /* IMPLEMENT: retrieve iaq_baseline from presistent storage;
-     * err = sgp_set_iaq_baseline(iaq_baseline);
+     * err = sgp30_set_iaq_baseline(iaq_baseline);
      */
 
     /* Run periodic IAQ measurements at defined intervals */
     while (1) {
-        err = sgp_measure_iaq_blocking_read(&tvoc_ppb, &co2_eq_ppm);
+        err = sgp30_measure_iaq_blocking_read(&tvoc_ppb, &co2_eq_ppm);
         if (err == STATUS_OK) {
             printf("tVOC  Concentration: %dppb\n", tvoc_ppb);
             printf("CO2eq Concentration: %dppm\n", co2_eq_ppm);
@@ -121,7 +121,7 @@ int main(void) {
 
         /* Persist the current baseline every hour */
         if (++i % 3600 == 3599) {
-            err = sgp_get_iaq_baseline(&iaq_baseline);
+            err = sgp30_get_iaq_baseline(&iaq_baseline);
             if (err == STATUS_OK) {
                 /* IMPLEMENT: store baseline to presistent storage */
             }
